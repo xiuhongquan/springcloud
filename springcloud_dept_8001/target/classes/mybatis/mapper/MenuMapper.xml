@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springcloud.dao.MenuDao">
+    <resultMap id="MenuDto" type="com.atguigu.springcloud.entities.Menu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="icon" property="icon" jdbcType="VARCHAR"/>
+        <result column="order" property="order" jdbcType="INTEGER"/>
+
+    </resultMap>
+    <select id="queryMenuList" resultMap="MenuDto">
+        SELECT
+            id,`name`,parent_id,url,icon,`order`
+        FROM
+            jrbac_menu ORDER BY `order` ASC
+    </select>
+</mapper>
